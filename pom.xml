@@ -24,7 +24,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>zyxhj.cn</groupId>
-			<artifactId>content</artifactId>
+			<artifactId>zero</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
