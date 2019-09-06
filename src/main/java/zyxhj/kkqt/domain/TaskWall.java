@@ -46,82 +46,9 @@ public class TaskWall extends TSEntity {
 		}
 	}
 
-	public static enum STATUS implements ENUMVALUE {
-		CREATED((byte) 0, "已创建"), //
-		PUBLISHED((byte) 1, "已发布"), //
-		RECEIVE((byte) 2, "已领取"), //
-		CLOSED((byte) 3, "已关闭"), //
-		;
 
-		public String txt;
-		public byte v;
 
-		private STATUS(byte v, String txt) {
-			this.v = v;
-			this.txt = txt;
-		}
 
-		@Override
-		public byte v() {
-			return v;
-		}
-
-		@Override
-		public String txt() {
-			return txt;
-		}
-	}
-
-	public static enum TASKSTATUS implements ENUMVALUE {
-		PUBLISHED((byte) 0, "已发布"), //
-		EXAMINEUSERSUCCESS((byte) 1, "确认接取任务的人"), //
-		EXAMINETASK((byte) 2, "审核任务"), //
-		SUCCESS((byte) 3, "任务完成"), //
-
-		;
-
-		public String txt;
-		public byte v;
-
-		private TASKSTATUS(byte v, String txt) {
-			this.v = v;
-			this.txt = txt;
-		}
-
-		@Override
-		public byte v() {
-			return v;
-		}
-
-		@Override
-		public String txt() {
-			return txt;
-		}
-	}
-
-	public static enum ACCESSSTATUS implements ENUMVALUE {
-		ONE((byte) 0, "单人任务"), //
-		MORE((byte) 1, "多人任务"), //
-		;
-
-		public String txt;
-		public byte v;
-
-		private ACCESSSTATUS(byte v, String txt) {
-			this.v = v;
-			this.txt = txt;
-		}
-
-		@Override
-		public byte v() {
-			return v;
-		}
-
-		@Override
-		public String txt() {
-			return txt;
-		}
-	}
 
 	public static enum LEVEL implements ENUMVALUE {
 		SYSTEM((byte) 0, "平台级置顶"), //
@@ -208,21 +135,19 @@ public class TaskWall extends TSEntity {
 	@TSAnnIndex(type = FieldType.GEO_POINT, enableSortAndAgg = true, store = true)
 	@TSAnnField(column = TSAnnField.ColumnType.STRING)
 	public String pos;
-//
 	/**
 	 * 需求标题
 	 */
 	@TSAnnIndex(type = FieldType.TEXT, enableSortAndAgg = false, store = false)
 	@TSAnnField(column = TSAnnField.ColumnType.STRING)
 	public String title;
-//
+
 	/**
 	 * 标签
 	 */
-	@TSAnnIndex(type = FieldType.KEYWORD, enableSortAndAgg = false, store = true, isArray = true)
+	@TSAnnIndex(type = FieldType.KEYWORD, enableSortAndAgg = true, store = true, isArray = true)
 	@TSAnnField(column = TSAnnField.ColumnType.STRING)
 	public String tags;
-//
 	/**
 	 * 需求金额
 	 */
@@ -250,61 +175,5 @@ public class TaskWall extends TSEntity {
 	@TSAnnField(column = TSAnnField.ColumnType.INTEGER)
 	public Long accessStatus;
 
-//
-//	/**
-//	 * 分片编号，MD5(id)，避免数据热点
-//	 */
-//	@TSAnnID(key = TSAnnID.Key.PK1, type = PrimaryKeyType.STRING)
-//	public String _id;
-//
-//	/**
-//	 * 消息编号
-//	 */
-//	@TSAnnID(key = TSAnnID.Key.PK2, type = PrimaryKeyType.INTEGER)
-//	public Long id;
-//
-//	/**
-//	 * 所属模块
-//	 */
-//	@TSAnnIndex(type = FieldType.KEYWORD, enableSortAndAgg = true, store = true)
-//	@TSAnnField(column = TSAnnField.ColumnType.STRING)
-//	public String module;
-//
-//	/**
-//	 * 类型
-//	 */
-//	@TSAnnIndex(type = FieldType.LONG, enableSortAndAgg = true, store = true)
-//	@TSAnnField(column = TSAnnField.ColumnType.INTEGER)
-//	public Long type;
-//
-
-//	/**
-//	 * 需求
-//	 */
-//	@TSAnnIndex(type = FieldType.KEYWORD, enableSortAndAgg = true, store = true, isArray = true)
-//	@TSAnnField(column = TSAnnField.ColumnType.STRING)
-//	public String needs;
-//
-//	/**
-//	 * 状态
-//	 */
-//	@TSAnnIndex(type = FieldType.LONG, enableSortAndAgg = true, store = false)
-//	@TSAnnField(column = TSAnnField.ColumnType.INTEGER)
-//	public Long status;
-//
-//	/**
-//	 * 创建者
-//	 */
-//	@TSAnnIndex(type = FieldType.LONG, enableSortAndAgg = true, store = true)
-//	@TSAnnField(column = TSAnnField.ColumnType.INTEGER)
-//	public Long upUserId;
-//
-//	/**
-//	 * 任务时间
-//	 */
-//	@TSAnnIndex(type = FieldType.LONG, enableSortAndAgg = true, store = true)
-//	@TSAnnField(column = TSAnnField.ColumnType.INTEGER)
-//	public Date time;
-//	
 
 }
