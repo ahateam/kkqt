@@ -73,5 +73,13 @@ public class Order {
 	 */
 	@RDSAnnField(column = RDSAnnField.TEXT_TITLE)
 	public Byte status;
+	
+	/**
+	 * 渠道编号
+	 */
+	@RDSAnnField(column = RDSAnnField.TEXT_TITLE)
+	public String channelId;
+	
+	public String channelType;
 
 }
